@@ -13,7 +13,7 @@ class CustomAuthController extends Controller{
     }
 
     public function customLogin(Request $request){
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('email', 'password', 'name');
         if(Auth::attempt($credentials)){
             return redirect()->intended('dashboard')->withSuccess('Masuk');
         }else{
