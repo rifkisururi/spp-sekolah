@@ -14,11 +14,15 @@ class Siswa extends Controller{
     public function index(){
         
         $kelas = DB::table('kelas')->get();
-        $data = DB::table('siswa')->get();
+        $data = DB::table('siswa')
+            ->join('kelas', 'siswa.id_kelas', '=', 'kelas.id')
+            ->select('siswa.*', 'kelas.nama_kelas as kelas')
+            ->get();
         return view('siswa.index', ['data' => $data, 'kelas' => $kelas]);
     }
+
     public function store(Request $request){
-        $data = new KelasModel($request->all());
+        $data = new SiswaModel($request->all());
         $data->save();
         return response()->json(array(
             'success' => true,
@@ -29,9 +33,13 @@ class Siswa extends Controller{
     public function update(Request $request)
     {
         $id = $request->id;
-        $data = KelasModel::find($id);
-        $data->nama_kelas = $request->nama_kelas;
-        $data->spp = $request->spp;
+        $data = SiswaModel::find($id);
+        $data->nis = $request->nis;
+        $data->nama = $request->nama;
+        $data->jenis_kelamin = $request->jenis_kelamin;
+        $data->alamat = $request->alamat;
+        $data->no_hp = $request->no_hp;
+        $data->id_kelas = $request->id_kelas;
         $data->save();
 
         return response()->json(array(

@@ -6,6 +6,7 @@ use App\Http\Controllers\Dashboard;
 use App\Http\Controllers\Kelas;
 use App\Http\Controllers\Spp;
 use App\Http\Controllers\Periode;
+use App\Http\Controllers\Siswa;
 
 /*
 |--------------------------------------------------------------------------
