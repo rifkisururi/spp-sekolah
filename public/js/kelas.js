@@ -1,4 +1,5 @@
 $(document).ready(function(){
+    // membuat tombol add
     $(".dataTables_length label").before("<button class='btn btn-primary' id='add'>Tambah</button>");
 });
 
@@ -23,11 +24,12 @@ $(document).on("click", ".btnCancel", function(){
     $("."+classTr).remove();
 });
 
-
+// ketika tombol save ditekan
 $(document).on("click", ".btnSave", function(){
     var id = $(this).attr("id").replace("btnSave_","");
     var data = getData(id);
     console.log(data);
+    // validasi data sebelum dikirim ke controller
 
     // aksi buat kirim data ke controller
     $.ajax({
@@ -105,6 +107,7 @@ $(document).on("click", ".btnSaveEdit", function(){
     var id = $(this).attr("id").replace("btnSave_","");
     var data = getData(id);
     console.log('update',data);
+    // validasi data sebelum dikirim ke controller
 
     // aksi buat kirim data ke controller
     $.ajax({

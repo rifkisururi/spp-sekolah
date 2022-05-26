@@ -60,9 +60,28 @@
                 Data Master
             </div>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('kelas')}}">
+                <a class="nav-link" href="{{route('siswa')}}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Siswa</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('siswa')}}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Kelas</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('periode')}}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Periode</span></a>
+            </li>
+            
+            <div class="sidebar-heading">
+                
+            </div>
+            <li class="nav-item">
+                <a class="nav-link" href="{{route('spp')}}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>SPP</span></a>
             </li>
 
         </ul>

@@ -2,20 +2,21 @@
 namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\KelasModel;
+use App\Models\SiswaModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use Illuminate\Support\Facades\DB;
 
-class Kelas extends Controller{
+class Siswa extends Controller{
 
     public function index(){
         
-        $data = DB::table('kelas')->get();
-        return view('kelas.index', ['data' => $data]);
+        $kelas = DB::table('kelas')->get();
+        $data = DB::table('siswa')->get();
+        return view('siswa.index', ['data' => $data, 'kelas' => $kelas]);
     }
-    
     public function store(Request $request){
         $data = new KelasModel($request->all());
         $data->save();
