@@ -17,7 +17,17 @@ class kelasSeeder extends Seeder
     {
         // kelas X, XI, XII
         DB::table('kelas')->insert([
-            'name' => 'bendahara'
-        ]);   
+            'nama_kelas' => 'X',
+            'spp' => 10000
+        ]);
+
+        DB::table('kelas')->insert([
+            'nama_kelas' => 'XI',
+            'spp' => 15000
+        ]);
+        DB::table('kelas')->insert([
+            'nama_kelas' => 'XII',
+            'spp' => 20000
+        ]);
     }
 }
