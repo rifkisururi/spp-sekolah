@@ -65,7 +65,7 @@
                     <span>Siswa</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{route('siswa')}}">
+                <a class="nav-link" href="{{route('kelas')}}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Kelas</span></a>
             </li>
