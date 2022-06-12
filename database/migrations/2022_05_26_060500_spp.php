@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('spp', function (Blueprint $table) {
             $table->id();
-            $table->date('tanggal_pembayaran');
+            $table->date('tanggal_pembayaran')->nullable();
             $table->integer('id_kelas');
             $table->integer('id_siswa');
             $table->integer('id_periode');

@@ -9,11 +9,11 @@ use Session;
 class Dashboard extends Controller{
 
     public function index(){
-        // if(Auth::check()){
-        //     return view('dashboard');
-        // }
+        if(Auth::check()){
+            return view('dashboard');
+        }
         // return view('auth.login');
-        return "hallo";
+        // return "hallo";
     }
 
 }

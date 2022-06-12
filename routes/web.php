@@ -19,10 +19,11 @@ use App\Http\Controllers\Siswa;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('login');
+// });
 
+Route::get('/',[CustomAuthController:: class,'index'])->name('login');
 Route::get('login',[CustomAuthController:: class,'index'])->name('login');
 Route::get('registration',[CustomAuthController:: class,'registration'])->name('registration');
 Route::POST('custom-registration',[CustomAuthController:: class,'customRegistration'])->name('custom.registration');
