@@ -61,4 +61,18 @@ class Spp extends Controller
             'success' => true
         ), 200);
     }
+
+    public function laporan($tgl = null){
+        $data = DB::table('spp')
+            ->join('kelas', 'spp.id_kelas', '=', 'kelas.id')
+            ->join('siswa', 'spp.id_siswa', '=', 'siswa.id')
+            ->join('periode', 'spp.id_periode', '=', 'periode.id')
+            ->where('spp.tanggal_pembayaran','=',$tgl)
+            ->where('spp.status','=','Lunas')
+            ->select('spp.*', 'kelas.nama_kelas as kelas', 'siswa.nama as siswa', 'periode.nama as periode')
+            ->get();
+        
+
+        return view('spp.laporan', ['data' => $data]);
+    }
 }
