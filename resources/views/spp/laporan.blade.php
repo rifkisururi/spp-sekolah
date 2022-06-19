@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+    $userLogin = $_SESSION["userLogin"];
+?>
 @extends('template/sbadmin')
 @section('content')
 <div class="card shadow mb-4">

@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+    $userLogin = $_SESSION["userLogin"];
+?>
 @extends('template/sbadmin')
 @section('content')
 <div class="card shadow mb-4">
@@ -18,7 +22,9 @@
                         <th>tanggal bayar</th>
                         <th>biaya</th>
                         <th>status</th>
-                        <th>aksi</th>
+                        <?php if($userLogin->role != 'kepala'){?>
+                            <th>aksi</th>
+                        <?php } ?>
                     </tr>
                 </thead>
                 <tbody>
@@ -33,10 +39,12 @@
                             <td class="tanggal_pembayaran">{{$dt->tanggal_pembayaran}}</td>
                             <td class="biaya">{{$dt->biaya}}</td>
                             <td class="status">{{$dt->status}}</td>
-                            <td>
-                                <button class="btn btn-warning btn-sm btnEdit" id="data_{{$dt->id}}">Edit</button>
-                                <button class="btn btn-danger btn-sm btnHapus" id="data_{{$dt->id}}">Hapus</button>
-                            </td>
+                            <?php if($userLogin->role != 'kepala'){?>
+                                <td>
+                                    <button class="btn btn-warning btn-sm btnEdit" id="data_{{$dt->id}}">Edit</button>
+                                    <button class="btn btn-danger btn-sm btnHapus" id="data_{{$dt->id}}">Hapus</button>
+                                </td>
+                            <?php } ?>
                         </tr>
                     @endforeach
                 </tbody>
