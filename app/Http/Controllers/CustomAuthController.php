@@ -43,7 +43,7 @@ class CustomAuthController extends Controller{
 
     public function dashboard(){
         if(Auth::check()){
-            return view('dashboard');
+            return view('spp');
         }
 
         return redirect('login')->withSuccess('Anda belum punya akses');

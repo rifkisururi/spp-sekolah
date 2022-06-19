@@ -57,3 +57,4 @@ Route::POST('spp/store',[Spp:: class,'store']);
 Route::POST('spp/update',[Spp:: class,'update']);
 Route::POST('spp/hapus',[Spp:: class,'hapus']);
 Route::get('laporan/{key?}',[Spp:: class,'laporan'])->name('laporan');
+Route::get('cetak/{key?}',[Spp:: class,'cetak']);

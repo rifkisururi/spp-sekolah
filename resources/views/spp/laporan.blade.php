@@ -28,7 +28,7 @@
                         <th>periode</th>
                         <th>tanggal bayar</th>
                         <th>biaya</th>
-                        <th>status</th>
+                        <th>Cetak</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,7 +42,7 @@
                         <td class="periode">{{$dt->periode}}</td>
                         <td class="tanggal_pembayaran">{{$dt->tanggal_pembayaran}}</td>
                         <td class="biaya">{{$dt->biaya}}</td>
-                        <td class="status">{{$dt->id}}</td>
+                        <td class="cetak"><button class="btn btn-primary btnCetak" id="{{$dt->id}}">Cetak</button></td>
                     </tr>
                     @endforeach
                 </tbody>
@@ -63,6 +63,15 @@
 
         window.location.replace($("#tanggal").val());
     });
+
+    $(document).on("click", ".btnCetak", function(){
+        var id = $(this).attr('id');
+        
+
+        window.location.replace('../cetak/'+id);
+    });
+
+    
 
 </script>
 

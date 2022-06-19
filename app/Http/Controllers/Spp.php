@@ -8,6 +8,7 @@ use App\Models\SppModel;
 use App\Models\PeriodeModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class Spp extends Controller
 {
@@ -71,8 +72,18 @@ class Spp extends Controller
             ->where('spp.status','=','Lunas')
             ->select('spp.*', 'kelas.nama_kelas as kelas', 'siswa.nama as siswa', 'periode.nama as periode')
             ->get();
-        
 
         return view('spp.laporan', ['data' => $data]);
+    }
+
+    public function cetak($id){
+        $data = DB::table('spp')
+            ->join('siswa', 'spp.id_siswa', '=', 'siswa.id')
+            ->where('spp.id','=',$id)
+            ->select('siswa.nama', 'spp.biaya', 'spp.tanggal_pembayaran as tanggal')
+            ->get();
+        $data = $data[0];
+        $pdf = PDF::loadview('spp.cetak', ['data' => $data]);
+    	return $pdf->download('Notta.pdf');
     }
 }
