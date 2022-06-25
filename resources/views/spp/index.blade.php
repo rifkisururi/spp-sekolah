@@ -55,11 +55,11 @@
 </div>
 @endsection
 
-
 @section('js')
 <script src="js/spp.js"></script>
 
 <script>
+    var role = "<?php echo $userLogin->role; ?>";
     var kelas = <?php echo $kelas ?>;
     var siswa = <?php echo $siswa ?>;
     var periode = <?php echo $periode ?>;

@@ -1,9 +1,12 @@
 $(document).ready(function(){
     // membuat tombol add
-    $(".dataTables_length label").before("<button class='btn btn-primary' id='add'>Tambah</button>");
-    drKelas = makeDropdownKelas();
-    drSiswa = makeDropdownSiswa();
-    drPeriode = makeDropdownPeriode();
+    if(role != "kepala"){
+        $(".dataTables_length label").before("<button class='btn btn-primary' id='add'>Tambah</button>");
+        drKelas = makeDropdownKelas();
+        drSiswa = makeDropdownSiswa();
+        drPeriode = makeDropdownPeriode();
+    }
+    
 });
 
 let drKelas = "";
