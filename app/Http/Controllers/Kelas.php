@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Session;
 use Illuminate\Support\Facades\DB;
+use SebastianBergmann\Environment\Console;
 
 class Kelas extends Controller{
 
     public function index(){
-        
         $data = DB::table('kelas')->get();
         return view('kelas.index', ['data' => $data]);
     }
@@ -44,6 +44,11 @@ class Kelas extends Controller{
         return response()->json(array(
             'success' => true
         ), 200);
+    }
+
+    public function getBiaya($id){
+        $data = KelasModel::find($id);
+        echo $data->spp;
     }
 }
 

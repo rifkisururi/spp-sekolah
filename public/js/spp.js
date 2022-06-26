@@ -24,7 +24,7 @@ $(document).on("click", "#add", function(){
             <td>${drSiswa}</td>
             <td>${drPeriode}</td>
             <td><input type="date" class="form-control tanggal_pembayaran"></td>
-            <td><input type="number" class="form-control biaya"></td>
+            <td><input type="number" class="form-control biaya" readonly></td>
             <td>
                 <select class="form-control status">
                     <option value="Lunas">Lunas</option>
@@ -37,6 +37,13 @@ $(document).on("click", "#add", function(){
             </td>
         </tr>
     `);
+
+    var id_kelas = $('.id_kelas').val();
+    var getBiayaSpp = 'getSpp/'+ id_kelas;
+
+    $.get(getBiayaSpp, function(data, status){
+        $('.biaya').val(data);
+    });
 });
 
 // ketika tombol cancel di tekan
@@ -260,3 +267,14 @@ function makeDropdownPeriode(){
 
     return dr;
 }
+
+$(document).on("change", ".id_kelas", function(){
+    var id_kelas = $(this).val();
+    console.log('id kelas ',id_kelas);
+    var getBiayaSpp = 'getSpp/'+ id_kelas;
+
+    $.get(getBiayaSpp, function(data, status){
+        $('.biaya').val(data);
+        //alert("Data: " + data + "\nStatus: " + status);
+    });
+});

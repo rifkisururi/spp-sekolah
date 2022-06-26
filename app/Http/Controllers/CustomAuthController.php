@@ -21,6 +21,8 @@ class CustomAuthController extends Controller{
             $_SESSION["userLogin"] = $user;
             return redirect()->intended('spp')->withSuccess('Masuk');
         }else{
+            $message = "username / password salah ";
+            echo "<script type='text/javascript'>alert('$message');</script>";
             return view('auth.login');
         }
         
