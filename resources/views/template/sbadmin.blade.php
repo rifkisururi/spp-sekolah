@@ -54,6 +54,11 @@
 
             <?php if($userLogin->role != 'kepala'){?>
                 <li class="nav-item">
+                <a class="nav-link" href="{{route('dashboard')}}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Dashboard</span></a>
+                </li>
+                <li class="nav-item">
                 <a class="nav-link" href="{{route('siswa')}}">
                     <i class="fas fa-fw fa-chart-area"></i>
                     <span>Siswa</span></a>
