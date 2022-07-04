@@ -31,11 +31,20 @@ class Spp extends Controller
 
     public function store(Request $request){
         $data = new SppModel($request->all());
-        $data->save();
-        return response()->json(array(
-            'success' => true,
-            'last_insert_id' => $data->id
-        ), 200);
+        // cek dulu data nya sudah pernah dimasukkan atau belum
+        $count = DB::table('spp')->where(['id_siswa' => $data->id_siswa, 'id_periode' => $data->id_periode])->count();
+        if($count == 0){
+            $data->save();
+            return response()->json(array(
+                'success' => true,
+                'last_insert_id' => $data->id
+            ), 200);
+        }else {
+            return response()->json(array(
+                'success' => false
+            ), 200);
+        }
+        
     }
 
     public function update(Request $request)

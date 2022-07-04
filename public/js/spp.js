@@ -65,26 +65,30 @@ $(document).on("click", ".btnSave", function(){
         type : "POST",
         data : data,
         success:function(respond){
-            console.log(respond);
-            var htmlNewRecore = `
-            <tr class="tr_${respond.id}">
-                <td hidden class="id_kelas">${data.id_kelas}</td>
-                <td hidden class="id_siswa">${data.id_siswa}</td>
-                <td hidden class="id_periode">${data.id_periode}</td>
-                <td class="kelas">${data.kelas}</td>
-                <td class="siswa">${data.siswa}</td>
-                <td class="periode">${data.periode}</td>
-                <td class="tanggal_pembayaran">${data.tanggal_pembayaran}</td>
-                <td class="biaya">${data.biaya}</td>
-                <td class="status">${data.status}</td>
-                <td>
-                    <button class="btn btn-warning btn-sm btnEdit" id="data_${respond.id}">Edit</button>
-                    <button class="btn btn-danger btn-sm btnHapus" id="data_${respond.id}">Hapus</button>
-                </td>
-            </tr>
-            `;
-            $(`tbody`).prepend(htmlNewRecore);
-            $('.tr_'+id).remove();
+            if(respond.success == true){
+                var htmlNewRecore = `
+                <tr class="tr_${respond.id}">
+                    <td hidden class="id_kelas">${data.id_kelas}</td>
+                    <td hidden class="id_siswa">${data.id_siswa}</td>
+                    <td hidden class="id_periode">${data.id_periode}</td>
+                    <td class="kelas">${data.kelas}</td>
+                    <td class="siswa">${data.siswa}</td>
+                    <td class="periode">${data.periode}</td>
+                    <td class="tanggal_pembayaran">${data.tanggal_pembayaran}</td>
+                    <td class="biaya">${data.biaya}</td>
+                    <td class="status">${data.status}</td>
+                    <td>
+                        <button class="btn btn-warning btn-sm btnEdit" id="data_${respond.id}">Edit</button>
+                        <button class="btn btn-danger btn-sm btnHapus" id="data_${respond.id}">Hapus</button>
+                    </td>
+                </tr>
+                `;
+                $(`tbody`).prepend(htmlNewRecore);
+                $('.tr_'+id).remove();
+            }else{
+                alert('Terjadi kesalahan, mohon cek kembali data yang anda masukkan');
+            }
+            
         },
         error:function(){
             alert("terjadi kesalahan");
@@ -208,19 +212,22 @@ $(document).on("click", ".btnSaveEdit", function(){
 $(document).on("click", ".btnHapus", function(){
     var id = $(this).attr("id").replace("data_","");
     var data = getData(id);
-
-    $.ajax({
-        url : "spp/hapus",
-        type : "POST",
-        data : data,
-        success:function(respond){
-            console.log(respond);
-            $('.tr_'+id).remove();
-        },
-        error:function(){
-            alert("terjadi kesalahan");
-        }
-    })
+    if (confirm("Apakah anda yakin ?") == true) {
+        $.ajax({
+            url : "spp/hapus",
+            type : "POST",
+            data : data,
+            success:function(respond){
+                console.log(respond);
+                $('.tr_'+id).remove();
+            },
+            error:function(){
+                alert("terjadi kesalahan");
+            }
+        });
+      } else {
+      }
+    
 });
 
 // membuat dropdown kelas

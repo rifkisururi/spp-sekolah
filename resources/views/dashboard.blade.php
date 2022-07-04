@@ -15,11 +15,22 @@ $userLogin = $_SESSION["userLogin"];
                         </div>
                         <div class="row no-gutters align-items-center">
                             <div class="col-auto">
-                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{$dt->lunas/$dt->jmlTagihan*100}}%</div>
+                                <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
+                                <?php if($dt->jmlTagihan != 0 && $dt->lunas != 0){
+                                    echo $dt->lunas/$dt->jmlTagihan*100;
+                                }else{
+                                    echo "0";
+                                } ?>    
+                                %
+                            </div>
                             </div>
                             <div class="col">
                                 <div class="progress progress-sm mr-2">
-                                    <div class="progress-bar bg-info" role="progressbar" style="width: <?php echo  $dt->lunas/$dt->jmlTagihan*100 ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+                                    <div class="progress-bar bg-info" role="progressbar" style="width: <?php if($dt->jmlTagihan != 0 && $dt->lunas != 0){
+                                    echo $dt->lunas/$dt->jmlTagihan*100;
+                                }else{
+                                    echo "0";
+                                } ?>%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
                                 </div>
                             </div>
                         </div>

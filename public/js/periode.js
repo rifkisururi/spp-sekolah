@@ -142,17 +142,21 @@ $(document).on("click", ".btnSaveEdit", function(){
 $(document).on("click", ".btnHapus", function(){
     var id = $(this).attr("id").replace("data_","");
     var data = getData(id);
-
-    $.ajax({
-        url : "periode/hapus",
-        type : "POST",
-        data : data,
-        success:function(respond){
-            console.log(respond);
-            $('.tr_'+id).remove();
-        },
-        error:function(){
-            alert("terjadi kesalahan");
-        }
-    })
+    if (confirm("Apakah anda yakin ?") == true) {
+        $.ajax({
+            url : "periode/hapus",
+            type : "POST",
+            data : data,
+            success:function(respond){
+                console.log(respond);
+                $('.tr_'+id).remove();
+            },
+            error:function(){
+                alert("terjadi kesalahan");
+            }
+        })
+      } else {
+        //text = "You canceled!";
+      }
+    
 });
