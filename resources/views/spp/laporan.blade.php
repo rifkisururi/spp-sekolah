@@ -11,7 +11,7 @@
     <div class="card-body">
         <div class="form-inline">
             <div class="form-group mb-2">
-                Tanggal
+                Periode
             </div>
             <div class="form-group mx-sm-3 mb-2">
                 <label for="inputPassword2" class="sr-only">Periode</label>
