@@ -14,8 +14,12 @@
                 Tanggal
             </div>
             <div class="form-group mx-sm-3 mb-2">
-                <label for="inputPassword2" class="sr-only">Tanggal</label>
-                <input type="date" class="form-control" id="tanggal">
+                <label for="inputPassword2" class="sr-only">Periode</label>
+                <select class="form-control" id="periode">
+                    @foreach($periode as $dt)
+                        <option value={{$dt->id}}>{{$dt->nama}}</option>
+                    @endforeach
+                </select>
             </div>
             <button id="cari" class="btn btn-primary mb-2">Cari</button>
         </div>
@@ -62,10 +66,7 @@
 <script>
 
     $(document).on("click", "#cari", function(){
-    var id = makeid(10);
-        console.log($("#tanggal").val());
-
-        window.location.replace($("#tanggal").val());
+        window.location.replace($("#periode").val());
     });
 
     $(document).on("click", ".btnCetak", function(){
