@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('siswa', function (Blueprint $table) {
             $table->id();
-            $table->string('nis');
-            $table->string('nama');
-            $table->string('jenis_kelamin');
+            $table->string('nis')->length(20);
+            $table->string('nama')->length(35);
+            $table->string('jenis_kelamin')->length(10);
             $table->text('alamat');
-            $table->string('no_hp');
+            $table->string('no_hp')->length(13);
             $table->integer('id_kelas');
         });
     }
