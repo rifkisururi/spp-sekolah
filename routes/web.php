@@ -29,7 +29,11 @@ Route::get('registration',[CustomAuthController:: class,'registration'])->name('
 Route::POST('custom-registration',[CustomAuthController:: class,'customRegistration'])->name('custom.registration');
 Route::POST('custom-login',[CustomAuthController:: class,'customLogin'])->name('custom.login');
 Route::get('logout',[CustomAuthController:: class,'logOut'])->name('logout');
+Route::get('profile',[CustomAuthController:: class,'profile'])->name('profile');
+Route::POST('updateProfile',[CustomAuthController:: class,'updateProfile']);
+Route::POST('updatePassword',[CustomAuthController:: class,'updatePassword']);
 
+// dashboard
 Route::get('dashboard',[Dashboard:: class,'index'])->name('dashboard');
 
 // kelas

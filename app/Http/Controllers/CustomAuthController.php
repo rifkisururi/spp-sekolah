@@ -69,6 +69,46 @@ class CustomAuthController extends Controller{
         return redirect('login');
     }
 
+    public function profile(){
+        return view('auth.profile');
+    }
+
+    public function updateProfile(Request $request){
+        $id = $request->id;
+        $data = User::find($id);
+        $data->email = $request->email;
+        $data->name = $request->name;
+        $data->save();
+        
+        session_start();
+        session_unset();
+        session_destroy();
+
+        session_start();
+        $data = User::find($id);
+        $_SESSION["userLogin"] = $data;
+        return response()->json(array(
+            'success' => true
+        ), 200);
+    }
+
+    public function updatePassword(Request $request){
+        $id = $request->id;
+        $data = User::find($id);
+        $data->email = $request->email;
+        $data->name = $request->name;
+        $data->password = Hash::make($request->password);
+        $data->save();
+
+        $data = User::find($id);
+        $_SESSION["userLogin"] = $data;
+        return response()->json(array(
+            'success' => true
+        ), 200);
+    }
+
+    
+
 }
 
 ?>
