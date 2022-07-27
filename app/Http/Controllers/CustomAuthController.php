@@ -19,7 +19,7 @@ class CustomAuthController extends Controller{
         if(Auth::attempt($credentials)){
             $user = Auth::user();
             $_SESSION["userLogin"] = $user;
-            return redirect()->intended('spp')->withSuccess('Masuk');
+            return redirect()->intended('dashboard')->withSuccess('Masuk');
         }else{
             $message = "email dan kata sandi salah ";
             echo "<script type='text/javascript'>alert('$message');</script>";
