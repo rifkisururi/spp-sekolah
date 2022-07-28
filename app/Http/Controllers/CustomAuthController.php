@@ -19,7 +19,7 @@ class CustomAuthController extends Controller{
         if(Auth::attempt($credentials)){
             $user = Auth::user();
             $_SESSION["userLogin"] = $user;
-            return redirect()->intended('spp')->withSuccess('Masuk');
+            return redirect()->intended('dashboard')->withSuccess('Masuk');
         }else{
             $message = "email / kata sandi salah ";
             echo "<script type='text/javascript'>alert('$message');</script>";
@@ -49,7 +49,7 @@ class CustomAuthController extends Controller{
 
     public function dashboard(){
         if(Auth::check()){
-            return redirect('spp');
+            return redirect('dashboard');
         }
 
         return redirect('login')->withSuccess('Anda belum punya akses');
