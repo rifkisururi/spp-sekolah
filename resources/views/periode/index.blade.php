@@ -31,11 +31,7 @@
                     @endforeach
                 </tbody>
                 <tfoot>
-                    <tr>
-                        <th>Nama kelas</th>
-                        <th>SPP</th>
-                        <th>Aksi</th>
-                    </tr>
+                
                 </tfoot>
             </table>
         </div>
