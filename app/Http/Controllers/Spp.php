@@ -23,7 +23,7 @@ class Spp extends Controller
             ->join('siswa', 'spp.id_siswa', '=', 'siswa.id')
             ->join('periode', 'spp.id_periode', '=', 'periode.id')
 
-            ->select('spp.*', 'kelas.nama_kelas as kelas', 'siswa.nama as siswa', 'periode.nama as periode')
+            ->select('spp.*', 'siswa.nis', 'kelas.nama_kelas as kelas', 'siswa.nama as siswa', 'periode.nama as periode')
             ->get();
 
         return view('spp.index', ['data' => $data, 'kelas' => $kelas, 'siswa' => $siswa, 'periode' => $periode]);

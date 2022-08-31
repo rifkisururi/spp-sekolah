@@ -249,7 +249,7 @@ function makeDropdownKelas(){
 function makeDropdownSiswa(){
     var dr = "";
     for(var i = 0; i< siswa.length; i++){
-        dr += `<option value='${siswa[i].id}'>${siswa[i].nama}</option>`;
+        dr += `<option value='${siswa[i].id}'>${siswa[i].nis} - ${siswa[i].nama}</option>`;
     }
 
     dr = `

@@ -34,7 +34,7 @@
                             <td hidden class="id_siswa">{{$dt->id_siswa}}</td>
                             <td hidden class="id_periode">{{$dt->id_periode}}</td>
                             <td class="kelas">{{$dt->kelas}}</td>
-                            <td class="siswa">{{$dt->siswa}}</td>
+                            <td class="siswa">{{$dt->nis}} - {{$dt->siswa}}</td>
                             <td class="periode">{{$dt->periode}}</td>
                             <td class="tanggal_pembayaran">{{$dt->tanggal_pembayaran}}</td>
                             <td class="biaya">{{$dt->biaya}}</td>
