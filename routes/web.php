@@ -63,3 +63,4 @@ Route::POST('spp/hapus',[Spp:: class,'hapus']);
 Route::get('laporan/{key?}',[Spp:: class,'laporan'])->name('laporan');
 Route::get('cetak/{key?}',[Spp:: class,'cetak']);
 Route::get('getSpp/{key?}',[Kelas:: class,'getBiaya']);
+Route::get('kartu/{key?}',[Spp:: class,'kartu']);

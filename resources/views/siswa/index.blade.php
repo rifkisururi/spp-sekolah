@@ -36,6 +36,7 @@
                             <td>
                                 <button class="btn btn-warning btn-sm btnEdit" id="data_{{$dt->id}}">Edit</button>
                                 <button class="btn btn-danger btn-sm btnHapus" id="data_{{$dt->id}}">Hapus</button>
+                                <button class="btn btn-info btn-sm btnKartu" id="data_{{$dt->id}}">Kartu SPP</button>
                             </td>
                         </tr>
                     @endforeach

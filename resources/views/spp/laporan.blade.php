@@ -1,6 +1,6 @@
-<?php 
-    session_start();
-    $userLogin = $_SESSION["userLogin"];
+<?php
+session_start();
+$userLogin = $_SESSION["userLogin"];
 ?>
 @extends('template/sbadmin')
 @section('content')
@@ -17,7 +17,7 @@
                 <label for="inputPassword2" class="sr-only">Periode</label>
                 <select class="form-control" id="periode">
                     @foreach($periode as $dt)
-                        <option value={{$dt->id}}>{{$dt->nama}}</option>
+                    <option value={{$dt->id}}>{{$dt->nama}}</option>
                     @endforeach
                 </select>
             </div>
@@ -25,6 +25,8 @@
         </div>
 
         <div class="table-responsive">
+
+            <h2>Lunas</h2>
             <table class="table table-bordered tblBarang" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
@@ -54,7 +56,36 @@
                     </tr>
                     @endforeach
                 </tbody>
+            </table>
 
+            <h2>Belum Lunas</h2>
+            <table class="table table-bordered tblBarang" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th hidden>id kelas</th>
+                        <th hidden>id siswa</th>
+                        <th hidden>id periode</th>
+                        <th>kelas</th>
+                        <th>siswa</th>
+                        <th>periode</th>
+                        <th>tanggal bayar</th>
+                        <th>biaya</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($data2 as $dt)
+                    <tr class="tr_{{$dt->id}}">
+                        <td hidden class="id_kelas">{{$dt->id_kelas}}</td>
+                        <td hidden class="id_siswa">{{$dt->id_siswa}}</td>
+                        <td hidden class="id_periode">{{$dt->id_periode}}</td>
+                        <td class="kelas">{{$dt->kelas}}</td>
+                        <td class="siswa">{{$dt->siswa}}</td>
+                        <td class="periode">{{$dt->periode}}</td>
+                        <td class="tanggal_pembayaran">{{$dt->tanggal_pembayaran}}</td>
+                        <td class="biaya">{{$dt->biaya}}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
             </table>
         </div>
     </div>
@@ -64,20 +95,14 @@
 
 @section('js')
 <script>
-
-    $(document).on("click", "#cari", function(){
+    $(document).on("click", "#cari", function() {
         window.location.replace($("#periode").val());
     });
 
-    $(document).on("click", ".btnCetak", function(){
+    $(document).on("click", ".btnCetak", function() {
         var id = $(this).attr('id');
-        
-
-        window.location.replace('../cetak/'+id);
+        window.location.replace('../cetak/' + id);
     });
-
-    
-
 </script>
 
 @endsection

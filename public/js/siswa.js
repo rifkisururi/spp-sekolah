@@ -60,6 +60,7 @@ $(document).on("click", ".btnSave", function(){
                 <td>
                     <button class="btn btn-warning btn-sm btnEdit" id="data_${respond.id}">Edit</button>
                     <button class="btn btn-danger btn-sm btnHapus" id="data_${respond.id}">Hapus</button>
+                    <button class="btn btn-info btn-sm btnKartu" id="data_${respond.id}">Kartu SPP</button>
                 </td>
             </tr>
             `;
@@ -158,6 +159,7 @@ $(document).on("click", ".btnSaveEdit", function(){
                 <td>
                     <button class="btn btn-warning btn-sm btnEdit" id="data_${data.id}">Edit</button>
                     <button class="btn btn-danger btn-sm btnHapus" id="data_${data.id}">Hapus</button>
+                    <button class="btn btn-info btn-sm btnKartu" id="data_${respond.id}">Kartu SPP</button>
                 </td>
             </tr>
             `;

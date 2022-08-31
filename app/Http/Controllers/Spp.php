@@ -29,6 +29,19 @@ class Spp extends Controller
         return view('spp.index', ['data' => $data, 'kelas' => $kelas, 'siswa' => $siswa, 'periode' => $periode]);
     }
 
+    public function kartu($idSiswa){
+        
+        $data = DB::table('spp')
+            ->join('kelas', 'spp.id_kelas', '=', 'kelas.id')
+            ->join('siswa', 'spp.id_siswa', '=', 'siswa.id')
+            ->join('periode', 'spp.id_periode', '=', 'periode.id')
+            ->where('spp.id_siswa','=', $idSiswa)
+            ->select('spp.*', 'kelas.nama_kelas as kelas', 'siswa.nama as siswa', 'periode.nama as periode')
+            ->get();
+
+        return view('spp.kartu', ['data' => $data]);
+    }
+
     public function store(Request $request){
         $data = new SppModel($request->all());
         // cek dulu data nya sudah pernah dimasukkan atau belum
@@ -37,14 +50,13 @@ class Spp extends Controller
             $data->save();
             return response()->json(array(
                 'success' => true,
-                'last_insert_id' => $data->id
+                'id' => $data->id
             ), 200);
         }else {
             return response()->json(array(
                 'success' => false
             ), 200);
         }
-        
     }
 
     public function update(Request $request)
@@ -82,9 +94,18 @@ class Spp extends Controller
             ->select('spp.*', 'kelas.nama_kelas as kelas', 'siswa.nama as siswa', 'periode.nama as periode')
             ->get();
 
+        $data2 = DB::table('spp')
+            ->join('kelas', 'spp.id_kelas', '=', 'kelas.id')
+            ->join('siswa', 'spp.id_siswa', '=', 'siswa.id')
+            ->join('periode', 'spp.id_periode', '=', 'periode.id')
+            ->where('spp.id_periode','=',$periode)
+            ->where('spp.status','!=','Lunas')
+            ->select('spp.*', 'kelas.nama_kelas as kelas', 'siswa.nama as siswa', 'periode.nama as periode')
+            ->get();
+
         $periode = DB::table('periode')->get();
 
-        return view('spp.laporan', ['data' => $data, 'periode' => $periode]);
+        return view('spp.laporan', ['data' => $data,'data2' => $data2, 'periode' => $periode]);
     }
 
     public function cetak($id){
