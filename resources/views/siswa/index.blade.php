@@ -42,16 +42,7 @@
                     @endforeach
                 </tbody>
                 <tfoot  >
-                    <tr>
-                        <th>NIS </th>
-                        <th>Nama </th>
-                        <th>Jenis Kelamin</th>
-                        <th>Alamat</th>
-                        <th>No Hp</th>
-                        <th>Kelas</th>
-                        <th hidden>id_kelas</th>
-                        <th>Aksi</th>
-                    </tr>
+                    
                 </tfoot>
             </table>
         </div>
