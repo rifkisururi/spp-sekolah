@@ -57,6 +57,7 @@ $userLogin = $_SESSION["userLogin"];
                     @endforeach
                 </tbody>
             </table>
+            Total Biaya {{$jumlahLunas}}
 
             <h2>Belum Lunas</h2>
             <table class="table table-bordered tblBarang" id="dataTable" width="100%" cellspacing="0">

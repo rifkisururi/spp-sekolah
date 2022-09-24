@@ -104,19 +104,27 @@ class Spp extends Controller
             ->get();
 
             
-        $jumlah = DB::table('spp')
-        ->join('kelas', 'spp.id_kelas', '=', 'kelas.id')
-        ->join('siswa', 'spp.id_siswa', '=', 'siswa.id')
-        ->join('periode', 'spp.id_periode', '=', 'periode.id')
-        ->where('spp.id_periode','=',$periode)
-        ->where('spp.status','!=','Lunas')
-        ->get()->sum('biaya');;
+            $jumlah = DB::table('spp')
+            ->join('kelas', 'spp.id_kelas', '=', 'kelas.id')
+            ->join('siswa', 'spp.id_siswa', '=', 'siswa.id')
+            ->join('periode', 'spp.id_periode', '=', 'periode.id')
+            ->where('spp.id_periode','=',$periode)
+            ->where('spp.status','!=','Lunas')
+            ->get()->sum('biaya');;
+
+            $jumlahLunas = DB::table('spp')
+            ->join('kelas', 'spp.id_kelas', '=', 'kelas.id')
+            ->join('siswa', 'spp.id_siswa', '=', 'siswa.id')
+            ->join('periode', 'spp.id_periode', '=', 'periode.id')
+            ->where('spp.id_periode','=',$periode)
+            ->where('spp.status','=','Lunas')
+            ->get()->sum('biaya');;
 
             
 
         $periode = DB::table('periode')->get();
 
-        return view('spp.laporan', ['data' => $data,'data2' => $data2, 'periode' => $periode, 'jumlah' => $jumlah]);
+        return view('spp.laporan', ['data' => $data,'data2' => $data2, 'periode' => $periode, 'jumlah' => $jumlah, 'jumlahLunas' => $jumlahLunas]);
     }
 
     public function cetak($id){
