@@ -27,7 +27,7 @@ $userLogin = $_SESSION["userLogin"];
         <div class="table-responsive">
 
             <h2>Lunas</h2>
-            <table class="table table-bordered tblBarang" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered " id="" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th hidden>id kelas</th>
@@ -60,7 +60,7 @@ $userLogin = $_SESSION["userLogin"];
             Total Biaya {{$jumlahLunas}}
 
             <h2>Belum Lunas</h2>
-            <table class="table table-bordered tblBarang" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered " id="" width="100%" cellspacing="0">
                 <thead>
                     <tr>
                         <th hidden>id kelas</th>
