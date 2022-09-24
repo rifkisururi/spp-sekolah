@@ -210,3 +210,8 @@ function makeDropdownKelas(){
 
     return dr;
 }
+
+$(document).on("click", ".btnKartu", function(){
+    var id = $(this).attr("id").replace("data_","");
+    window.location.href = "kartu/"+id;
+});

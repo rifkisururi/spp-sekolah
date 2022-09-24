@@ -87,6 +87,7 @@ $userLogin = $_SESSION["userLogin"];
                     @endforeach
                 </tbody>
             </table>
+            Total Biaya {{$jumlah}}
         </div>
     </div>
 </div>

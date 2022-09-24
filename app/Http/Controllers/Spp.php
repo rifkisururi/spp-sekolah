@@ -103,9 +103,20 @@ class Spp extends Controller
             ->select('spp.*', 'kelas.nama_kelas as kelas', 'siswa.nama as siswa', 'periode.nama as periode')
             ->get();
 
+            
+        $jumlah = DB::table('spp')
+        ->join('kelas', 'spp.id_kelas', '=', 'kelas.id')
+        ->join('siswa', 'spp.id_siswa', '=', 'siswa.id')
+        ->join('periode', 'spp.id_periode', '=', 'periode.id')
+        ->where('spp.id_periode','=',$periode)
+        ->where('spp.status','!=','Lunas')
+        ->get()->sum('biaya');;
+
+            
+
         $periode = DB::table('periode')->get();
 
-        return view('spp.laporan', ['data' => $data,'data2' => $data2, 'periode' => $periode]);
+        return view('spp.laporan', ['data' => $data,'data2' => $data2, 'periode' => $periode, 'jumlah' => $jumlah]);
     }
 
     public function cetak($id){
